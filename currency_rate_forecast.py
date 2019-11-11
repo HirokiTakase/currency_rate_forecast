@@ -41,7 +41,7 @@ def main():
     # trump["jst"] = trump["time"] - timedelta(hours = 14)
 
      # ドル円の１分足データの取得
-    ged.get_exchange_data()
+    ged.getexchangedata(datetime(2019,11,6), datetime(2019,11,7))
    
     rate = pd.read_csv("usd_1min_trump.csv")
     rate = rate[["t", "c"]]
@@ -58,22 +58,12 @@ def main():
 
 
     masta = pd.merge(trump, rate, left_on='time', right_on='t', how='outer')
-    masta = masta[["t", "tweet", "target"]
-
+    masta = masta[["t", "tweet", "target"]]
     masta.to_csv('masta_data.csv')
     rate.to_csv('rate.csv')
 
 
 if __name__ == "__main__":
-    
-    
-    
-
-
-
-    
-    
-    
     main()
 
 
